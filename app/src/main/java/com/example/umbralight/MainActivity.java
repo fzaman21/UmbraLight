@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             fragment = new MenuHomeActivity();
+        } else if (id == R.id.nav_navigation) {
+            fragment = new MenuNavigationActivity();
         }
 
         callFragment(fragment);
