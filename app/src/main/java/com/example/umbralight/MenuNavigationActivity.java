@@ -17,7 +17,7 @@ public class MenuNavigationActivity extends Fragment {
 
         view = (RelativeLayout) inflater.inflate(R.layout.activity_menu_navigation, container, false);
 
-        getActivity().setTitle("Gallery");
+        getActivity().setTitle("Navigation");
 
         return view;
     }
