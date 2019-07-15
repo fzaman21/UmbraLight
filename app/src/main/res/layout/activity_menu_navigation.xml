@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_list"
+    <ImageButton
+        android:id="@+id/police"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical">
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        app:srcCompat="@drawable/police_station" />
 
-    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Kantor Polisi" />
 
-</RelativeLayout>
+    <ImageButton
+        android:id="@+id/fire"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        app:srcCompat="@drawable/fire_station" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Pemadam Kebakaran" />
+
+    <ImageButton
+        android:id="@+id/hospital"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        app:srcCompat="@drawable/hospital_building" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Rumah Sakit" />
+</LinearLayout>

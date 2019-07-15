@@ -3,93 +3,69 @@ package com.example.umbralight;
 //Fikih Zaman
 //AKB-2
 //07-07-2019
-import android.app.ProgressDialog;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.support.constraint.Constraints.TAG;
+import android.widget.ImageButton;
 
 public class MenuNavigationActivity extends Fragment {
     public MenuNavigationActivity(){}
-    RelativeLayout view;
-    private List<Instansi> instansiList;
-    private RecyclerView mList;
+    private View v;
+    FragmentManager fragmentManager;
+    Fragment fragment = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().setTitle("Navigation");
 
-        view = (RelativeLayout) inflater.inflate(R.layout.activity_menu_navigation, container, false);
-        mList = view.findViewById(R.id.main_list);
-        mList.setHasFixedSize(true);
-        mList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        instansiList = new ArrayList<>();
-        AndroidNetworking.initialize(getActivity());
-        getInstansi();
-
-        return view;
+        v = inflater.inflate(R.layout.activity_menu_navigation, container, false);
+        btnInstansi();
+        return v;
     }
 
-    public void getInstansi() {
-        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
-        AndroidNetworking.get("http://dev.farizdotid.com/api/instansi/semuainstansi")
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(TAG, "berhasil mang " + response);
-                        try {
-                            JSONArray dataInstansi = response.getJSONArray("instansi");
-                            for (int i = 0; i < dataInstansi.length(); i++) {
-                                JSONObject data = dataInstansi.getJSONObject(i);
+    private void btnInstansi() {
+        ImageButton police = v.findViewById(R.id.police);
+        ImageButton fire = v.findViewById(R.id.fire);
+        ImageButton hospital = v.findViewById(R.id.hospital);
 
-                                instansiList.add(new Instansi(
-                                        data.getString("jenis_instansi"),
-                                        data.getString("nama_instansi"),
-                                        data.getString("alamat_instansi"),
-                                        data.getString("lat_"),
-                                        data.getString("long_")
-                                ));
-                            }
-
-                            Log.d(TAG, "berhasil mang selesai looping");
-                            InstansiAdapter adapter = new InstansiAdapter(instansiList);
-                            mList.setAdapter(adapter);
-                            progressDialog.dismiss();
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                        }
-                    }
-                    @Override
-                    public void onError(ANError error) {
-                        Log.d(TAG, "error mang " + error);
-                        progressDialog.dismiss();
-                    }
-                });
+        police.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callFragment("Polisi");
+            }
+        });
+        fire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callFragment("Pemadam");
+            }
+        });
+        hospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callFragment("Rumkit");
+            }
+        });
     }
 
+    private void callFragment(String instansi) {
+        Bundle bundle = new Bundle();
+        bundle.putString("instansi", instansi);
+        fragment = new InstansiActivity();
+        fragment.setArguments(bundle);
+        fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .addToBackStack(null)
+                .commit();
+        DrawerLayout drawer = getActivity().findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+    }
 }
