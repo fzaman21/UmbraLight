@@ -33,11 +33,11 @@ public class InstansiActivity extends Fragment {
     RelativeLayout view;
     private List<Instansi> instansiList;
     private RecyclerView mList;
+    private String instansi;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setTitle("Navigation");
 
         view = (RelativeLayout) inflater.inflate(R.layout.activity_instansi, container, false);
         mList = view.findViewById(R.id.main_list);
@@ -45,15 +45,22 @@ public class InstansiActivity extends Fragment {
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         instansiList = new ArrayList<>();
         AndroidNetworking.initialize(getActivity());
+        final Bundle bundle = this.getArguments();
+        instansi = bundle.getString("instansi");
+        if (instansi.equals("Pemadam")) {
+            getActivity().setTitle("Pemadam Kebakaran");
+        } else if (instansi.equals("Rumkit")) {
+            getActivity().setTitle("Rumah Sakit");
+        } else {
+            getActivity().setTitle("Polisi");
+        }
+
         getInstansi();
 
         return view;
     }
 
     public void getInstansi() {
-        final Bundle bundle = this.getArguments();
-        Log.d(TAG, "berhasil mang bundle " + bundle.get("instansi"));
-        final String instansi = bundle.getString("instansi");
 
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading...");
@@ -74,7 +81,7 @@ public class InstansiActivity extends Fragment {
                                     Log.d(TAG, "berhasil mang masuk if ");
 
                                     instansiList.add(new Instansi(
-                                            data.getString("jenis_instansi"),
+                                            data.getString("nama_kabupaten"),
                                             data.getString("nama_instansi"),
                                             data.getString("alamat_instansi"),
                                             data.getString("lat_"),

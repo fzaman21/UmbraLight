@@ -16,9 +16,7 @@ import java.util.List;
 import static android.support.constraint.Constraints.TAG;
 
 public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHolder> {
-//    private Context context;
     private List<Instansi> list;
-    public static String latitude, longitude;
 
     //construktor InstansiAdapter
     public InstansiAdapter(List<Instansi> list) {
@@ -37,11 +35,9 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Instansi instansi = list.get(position);
 
-        holder.textJenis.setText(instansi.getJenis());
+        holder.textKabupaten.setText(instansi.getKabupaten());
         holder.textNama.setText(instansi.getNama());
         holder.textAlamat.setText(instansi.getAlamat());
-        latitude = instansi.getLatitude();
-        longitude = instansi.getLongitude();
 
         holder.cardInstansi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,12 +59,12 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textJenis, textNama, textAlamat;
+        private TextView textKabupaten, textNama, textAlamat;
         private CardView cardInstansi;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textJenis = itemView.findViewById(R.id.jenis_instansi);
+            textKabupaten = itemView.findViewById(R.id.nama_kabupaten);
             textNama = itemView.findViewById(R.id.nama_instansi);
             textAlamat = itemView.findViewById(R.id.alamat_instansi);
             cardInstansi = itemView.findViewById(R.id.card_instansi);

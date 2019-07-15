@@ -1,22 +1,22 @@
 package com.example.umbralight;
 
 public class Instansi {
-    private String jenis;
+    private String kabupaten;
     private String nama;
     private String alamat;
     private String latitude;
     private String longitude;
 
-    public Instansi(String jenis, String nama, String alamat, String latitude, String longitude) {
-        this.jenis = jenis;
+    public Instansi(String kabupaten, String nama, String alamat, String latitude, String longitude) {
+        this.kabupaten = kabupaten;
         this.nama = nama;
         this.alamat = alamat;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public String getJenis() {
-        return jenis;
+    public String getKabupaten() {
+        return kabupaten;
     }
     public String getNama() {
         return nama;
@@ -31,19 +31,19 @@ public class Instansi {
         return longitude;
     }
 
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
+    public void setKabupaten(String kabupaten) {
+        this.kabupaten = kabupaten;
     }
     public void setNama(String nama) {
-        this.jenis = nama;
+        this.kabupaten = nama;
     }
     public void setAlamat(String alamat) {
-        this.jenis = alamat;
+        this.kabupaten = alamat;
     }
     public void setLatitude(String latitude) {
-        this.jenis = latitude;
+        this.kabupaten = latitude;
     }
     public void setLongitude(String longitude) {
-        this.jenis = longitude;
+        this.kabupaten = longitude;
     }
 }
