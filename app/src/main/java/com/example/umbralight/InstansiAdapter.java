@@ -1,14 +1,19 @@
 package com.example.umbralight;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHolder> {
 //    private Context context;
@@ -30,13 +35,26 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Instansi instansi = list.get(position);
+        final Instansi instansi = list.get(position);
 
         holder.textJenis.setText(instansi.getJenis());
         holder.textNama.setText(instansi.getNama());
         holder.textAlamat.setText(instansi.getAlamat());
         latitude = instansi.getLatitude();
         longitude = instansi.getLongitude();
+
+        holder.cardInstansi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "berhasil di klik mang " + instansi.getNama());
+                Context context = v.getContext();
+                Intent i =new Intent(context, NavigationActivity.class);
+                i.putExtra("latitude", instansi.getLatitude());
+                i.putExtra("longitude", instansi.getLongitude());
+                i.putExtra("nama", instansi.getNama());
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -46,12 +64,15 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textJenis, textNama, textAlamat;
+        private CardView cardInstansi;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textJenis = itemView.findViewById(R.id.jenis_instansi);
             textNama = itemView.findViewById(R.id.nama_instansi);
             textAlamat = itemView.findViewById(R.id.alamat_instansi);
+            cardInstansi = itemView.findViewById(R.id.card_instansi);
         }
+
     }
 }
