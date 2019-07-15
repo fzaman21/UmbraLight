@@ -7,10 +7,6 @@ public class Instansi {
     private String latitude;
     private String longitude;
 
-    public Instansi() {
-
-    }
-
     public Instansi(String jenis, String nama, String alamat, String latitude, String longitude) {
         this.jenis = jenis;
         this.nama = nama;

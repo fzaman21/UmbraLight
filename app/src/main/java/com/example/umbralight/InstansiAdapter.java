@@ -1,6 +1,7 @@
 package com.example.umbralight;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,23 +11,25 @@ import android.widget.TextView;
 import java.util.List;
 
 public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHolder> {
-    private Context context;
+//    private Context context;
     private List<Instansi> list;
     public static String latitude, longitude;
 
-    public InstansiAdapter(Context context, List<Instansi> list) {
-        this.context = context;
+    //construktor InstansiAdapter
+    public InstansiAdapter(List<Instansi> list) {
+//        this.context = context;
         this.list = list;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.instansi_item, parent, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflate view yang akan digunakan yaitu layout instansi_item.xml
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.instansi_item, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Instansi instansi = list.get(position);
 
         holder.textJenis.setText(instansi.getJenis());
@@ -42,7 +45,7 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textJenis, textNama, textAlamat;
+        private TextView textJenis, textNama, textAlamat;
 
         public ViewHolder(View itemView) {
             super(itemView);
