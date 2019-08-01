@@ -5,19 +5,14 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/round_home_black_18dp"
-            android:title="Home" />
-
-        <item
             android:id="@+id/nav_navigation"
             android:icon="@drawable/round_explore_black_18dp"
             android:title="Navigation" />
 
         <item
-            android:id="@+id/nav_enciclopedy"
+            android:id="@+id/nav_dictionary"
             android:icon="@drawable/round_account_balance_black_18dp"
-            android:title="Encyclopedy" />
+            android:title="Dictionary" />
     </group>
 
     <item android:title="Other">
