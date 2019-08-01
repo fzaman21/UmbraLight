@@ -6,6 +6,7 @@
     card_view:cardCornerRadius="6dp"
     card_view:cardElevation="3dp"
     card_view:cardUseCompatPadding="true"
+    card_view:cardBackgroundColor="#E6E6FA"
     android:id="@+id/card_instansi">
 
     <LinearLayout
@@ -18,15 +19,14 @@
             android:id="@+id/nama_instansi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="kabupaten"
+            android:text="nama"
             android:textSize="18sp"/>
-
 
         <TextView
             android:id="@+id/nama_kabupaten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="nama"/>
+            android:text="kabupaten"/>
 
         <TextView
             android:id="@+id/alamat_instansi"

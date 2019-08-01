@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         // tampilan default awal ketika aplikasii dijalankan
         if (savedInstanceState == null) {
-            fragment = new MenuHomeActivity();
+            fragment = new MenuDictionaryActivity();
             callFragment(fragment);
         }
     }
@@ -80,12 +80,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            fragment = new MenuHomeActivity();
-        } else if (id == R.id.nav_navigation) {
+        if (id == R.id.nav_navigation) {
             fragment = new MenuNavigationActivity();
-        } else if (id == R.id.nav_enciclopedy) {
-            fragment = new MenuEncyclopedyActivity();
+        } else if (id == R.id.nav_dictionary) {
+            fragment = new MenuDictionaryActivity();
         } else if (id == R.id.nav_about) {
             fragment = new MenuAboutActivity();
         }

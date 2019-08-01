@@ -34,7 +34,6 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Instansi instansi = list.get(position);
-
         holder.textKabupaten.setText(instansi.getKabupaten());
         holder.textNama.setText(instansi.getNama());
         holder.textAlamat.setText(instansi.getAlamat());

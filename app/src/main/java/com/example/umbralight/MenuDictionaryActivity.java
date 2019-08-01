@@ -31,8 +31,8 @@ import java.util.Iterator;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class MenuEncyclopedyActivity extends Fragment {
-    public MenuEncyclopedyActivity(){}
+public class MenuDictionaryActivity extends Fragment {
+    public MenuDictionaryActivity(){}
     public static JSONArray responseJSON;
 
     LinearLayout view;
