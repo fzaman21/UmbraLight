@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="6dp"
     card_view:cardElevation="3dp"
+    card_view:cardBackgroundColor="#E6E6FA"
     card_view:cardUseCompatPadding="true"
     android:id="@+id/card_meaning">
 
