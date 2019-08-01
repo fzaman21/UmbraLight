@@ -52,7 +52,7 @@ public class MenuDictionaryActivity extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         AndroidNetworking.initialize(getActivity());
-        getActivity().setTitle("Encyclopedy");
+        getActivity().setTitle("Dictionary");
 
         cari.setOnClickListener(new View.OnClickListener() {
             @Override
