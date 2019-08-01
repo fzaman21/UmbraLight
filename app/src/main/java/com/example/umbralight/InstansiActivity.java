@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +24,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.support.constraint.Constraints.TAG;
 
 public class InstansiActivity extends Fragment {
     public InstansiActivity(){}
@@ -71,15 +68,12 @@ public class InstansiActivity extends Fragment {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d(TAG, "berhasil mang " + response);
                         try {
                             JSONArray dataInstansi = response.getJSONArray("instansi");
                             for (int i = 0; i < dataInstansi.length(); i++) {
                                 JSONObject data = dataInstansi.getJSONObject(i);
 
                                 if (data.getString("jenis_instansi").equals(instansi)) {
-                                    Log.d(TAG, "berhasil mang masuk if ");
-
                                     instansiList.add(new Instansi(
                                             data.getString("nama_kabupaten"),
                                             data.getString("nama_instansi"),
@@ -89,8 +83,6 @@ public class InstansiActivity extends Fragment {
                                     ));
                                 }
                             }
-
-                            Log.d(TAG, "berhasil mang selesai looping");
                             InstansiAdapter adapter = new InstansiAdapter(instansiList);
                             mList.setAdapter(adapter);
                             progressDialog.dismiss();
@@ -102,7 +94,6 @@ public class InstansiActivity extends Fragment {
                     }
                     @Override
                     public void onError(ANError error) {
-                        Log.d(TAG, "error mang " + error);
                         progressDialog.dismiss();
                     }
                 });

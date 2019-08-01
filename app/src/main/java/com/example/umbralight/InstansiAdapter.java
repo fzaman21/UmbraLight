@@ -41,7 +41,6 @@ public class InstansiAdapter extends RecyclerView.Adapter<InstansiAdapter.ViewHo
         holder.cardInstansi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "berhasil di klik mang " + instansi.getNama());
                 Context context = v.getContext();
                 Intent i =new Intent(context, NavigationActivity.class);
                 i.putExtra("latitude", instansi.getLatitude());

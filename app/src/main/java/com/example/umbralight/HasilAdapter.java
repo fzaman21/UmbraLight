@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import static android.support.constraint.Constraints.TAG;
 
 public class HasilAdapter extends RecyclerView.Adapter<HasilAdapter.ViewHolder> {
     private ArrayList<String> word, phonetic, origin, key, definition, example;
@@ -69,8 +66,6 @@ public class HasilAdapter extends RecyclerView.Adapter<HasilAdapter.ViewHolder> 
         holder.recyclerView.setHasFixedSize(true);
 
         JSONArray response = MenuDictionaryActivity.responseJSON;
-        Log.d(TAG, "berhasil mang respon dari adapter " + response );
-
         try {
             key = new ArrayList<String>();
             definition = new ArrayList<String>();
@@ -86,16 +81,7 @@ public class HasilAdapter extends RecyclerView.Adapter<HasilAdapter.ViewHolder> 
                     definition.add(meaning_obj.optString("definition"));
                     example.add(meaning_obj.optString("example"));
                 }
-
-                Log.d(TAG, "berhasil mang definisi" + definition);
-                Log.d(TAG, "berhasil mang example" + example);
-
-
-                Log.d(TAG, "berhasil mang looping keyitem " + meaning.optString(key_item));
             }
-            Log.d(TAG, "berhasil mang isi meaning " + meaning );
-            Log.d(TAG, "berhasil mang key " + key );
-
             MeaningAdapter adapter = new MeaningAdapter(key, definition, example);
             holder.recyclerView.setAdapter(adapter);
 

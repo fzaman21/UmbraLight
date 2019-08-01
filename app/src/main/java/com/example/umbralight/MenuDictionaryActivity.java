@@ -24,12 +24,7 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import static android.support.constraint.Constraints.TAG;
 
 public class MenuDictionaryActivity extends Fragment {
     public MenuDictionaryActivity(){}
@@ -53,7 +48,6 @@ public class MenuDictionaryActivity extends Fragment {
 
         AndroidNetworking.initialize(getActivity());
         getActivity().setTitle("Dictionary");
-
         cari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,51 +72,24 @@ public class MenuDictionaryActivity extends Fragment {
                     @Override
                     public void onResponse(JSONArray response) {
                         responseJSON = response;
-                        Log.d(TAG, "berhasil mang semua data " + response);
                         ArrayList<String> word = new ArrayList<>();
                         ArrayList<String> phonetic = new ArrayList<>();
                         ArrayList<String> origin = new ArrayList<>();
-
                         try {
                             for(int i = 0; i < response.length(); i++) {
-                                Log.d(TAG, "berhasil mang looping" + response.length());
-
                                 word.add(response.getJSONObject(i).optString("word"));
-                                Log.d(TAG, "berhasil mang berhasil word");
                                 phonetic.add(response.getJSONObject(i).optString("phonetic"));
-                                Log.d(TAG, "berhasil mang berhasil phonetic");
-
                                 origin.add(response.getJSONObject(i).optString("origin"));
-                                Log.d(TAG, "berhasil mang berhasil origin");
-
                             }
-                            Log.d(TAG, "berhasil mang word " + word);
                             HasilAdapter adapter = new HasilAdapter(word, phonetic, origin);
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
-
-//                            try {
-//                                JSONObject meaning = array0.getJSONObject("meaning");
-//                                Log.d(TAG, "berhasil mang meaning " + meaning);
-//
-//                                Iterator<String> keys = meaning.keys();
-//                                while (keys.hasNext()) {
-//                                    String key = keys.next();
-//                                    Log.d(TAG, "berhasil mang meaning " + key + " isinya " + meaning.optString(key));
-//                                }
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                                Log.d(TAG, "error mang meaning " + e);
-//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.d(TAG, "error mang ambil response ");
                         }
                     }
                     @Override
                     public void onError(ANError error) {
-                        Log.d(TAG, "error mang hasil " + error);
                     }
                 });
     }
