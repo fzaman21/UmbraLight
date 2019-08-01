@@ -18,26 +18,24 @@
             android:id="@+id/key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Definition"
-            android:textSize="18sp"/>
+            android:text="Definition"/>
 
         <TextView
             android:id="@+id/definition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Definition"
-            android:textSize="18sp"/>
+            android:text="Definition"/>
 
         <TextView
             android:id="@+id/example"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Phonetic"/>
+            android:text="Example"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Synonyms"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Synonyms"/>-->
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_synonyms"

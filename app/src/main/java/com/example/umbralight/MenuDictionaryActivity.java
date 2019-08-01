@@ -85,9 +85,16 @@ public class MenuDictionaryActivity extends Fragment {
 
                         try {
                             for(int i = 0; i < response.length(); i++) {
-                                word.add(response.getJSONObject(i).getString("word"));
-                                phonetic.add(response.getJSONObject(i).getString("phonetic"));
-                                origin.add(response.getJSONObject(i).getString("origin"));
+                                Log.d(TAG, "berhasil mang looping" + response.length());
+
+                                word.add(response.getJSONObject(i).optString("word"));
+                                Log.d(TAG, "berhasil mang berhasil word");
+                                phonetic.add(response.getJSONObject(i).optString("phonetic"));
+                                Log.d(TAG, "berhasil mang berhasil phonetic");
+
+                                origin.add(response.getJSONObject(i).optString("origin"));
+                                Log.d(TAG, "berhasil mang berhasil origin");
+
                             }
                             Log.d(TAG, "berhasil mang word " + word);
                             HasilAdapter adapter = new HasilAdapter(word, phonetic, origin);

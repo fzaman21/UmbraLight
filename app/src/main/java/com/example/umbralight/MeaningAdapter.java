@@ -42,12 +42,12 @@ public class MeaningAdapter extends RecyclerView.Adapter<MeaningAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final String key_item = key.get(position);
         final String definition_item = definition.get(position);
         final String example_item = example.get(position);
-        final String key_item = key.get(position);
 
         holder.key.setText(key_item);
-        holder.definition.setText(definition_item);
-        holder.example.setText(example_item);
+        holder.definition.setText("Definition :" + definition_item);
+        holder.example.setText("Example :" + example_item);
     }
 }
