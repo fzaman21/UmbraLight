@@ -80,11 +80,16 @@ public class HasilAdapter extends RecyclerView.Adapter<HasilAdapter.ViewHolder> 
             while (keys.hasNext()) {
                 String key_item = keys.next();
                 key.add(key_item);
-                JSONArray meaning_item = meaning.getJSONArray(key_item);
-                JSONObject meaning_obj = meaning_item.getJSONObject(0);
-                definition.add(meaning_obj.optString("definition"));
-                example.add(meaning_obj.optString("example"));
-                Log.d(TAG, "berhasil mang definisi obj " + meaning_obj.optString("definition"));
+                JSONArray meaning_array = meaning.getJSONArray(key_item);
+                for(int i = 0; i < meaning_array.length(); i++) {
+                    JSONObject meaning_obj = meaning_array.getJSONObject(i);
+                    definition.add(meaning_obj.optString("definition"));
+                    example.add(meaning_obj.optString("example"));
+                }
+
+                Log.d(TAG, "berhasil mang definisi" + definition);
+                Log.d(TAG, "berhasil mang example" + example);
+
 
                 Log.d(TAG, "berhasil mang looping keyitem " + meaning.optString(key_item));
             }
